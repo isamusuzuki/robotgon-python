@@ -33,7 +33,7 @@ class Renrakumo():
         self.logger.debug('start send')
         result = Result(__name__)
         # 1. 原稿を読む
-        text_file = f'data/genko/{genko}.txt'
+        text_file = f'private-data/genko/{genko}.txt'
         if not os.path.exists(text_file):
             error_message = f'{text_file}が見つかりません'
             self.logger.critical(error_message)
@@ -45,7 +45,7 @@ class Renrakumo():
             self.logger.debug(f'read <= {text_file}')
 
             # 2. 名簿を読む
-            csv_file = f'data/meibo/{meibo}.csv'
+            csv_file = f'private-data/meibo/{meibo}.csv'
             if not os.path.exists(csv_file):
                 error_message = f'{csv_file}が見つかりません'
                 self.logger.critical(error_message)
