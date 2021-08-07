@@ -9,9 +9,16 @@ from fire import Fire
 
 
 class Main():
-    def renrakumo(self, genko: str, meibo: str):
+    def renrakumo(self, genko: str, meibo: str) -> None:
         """
         連絡網アプリを実行する
+
+        arameters
+        ----------
+        genko: str
+            原稿txtのファイル名
+        meibo: str
+            名簿csvのファイル名
         """
         logger = getLoggerA(
             __name__, DEBUG, 'both', 'renrakumo', 'monthly')

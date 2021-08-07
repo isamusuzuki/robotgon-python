@@ -22,9 +22,17 @@ class TwilioHandler():
         self.unit_price_dollar = 0.08
         self.dollar_yen_rate = 110.0
 
-    def calc_price(self, length: str) -> str:
+    def calc_price(self, length: int) -> int:
         """
         文字数から1通あたりの送信料金を計算する
+
+        Parameters
+        ----------
+        length: int
+
+        Returns
+        -------
+        price_yen: int
         """
         unit_count = math.ceil(length / self.unit_length)
         price_yen = math.ceil(
@@ -35,15 +43,47 @@ class TwilioHandler():
     def format_e164(self, phone: str) -> str:
         """
         電話番号をE164形式に整える
+
+        Parameters
+        ----------
+        phone: str
+
+        Returns
+        -------
+        e164: str
         """
         p = phone.replace('-', '')
-        return f'+81{p[1:]}'
+        e164 = f'+81{p[1:]}'
+        return e164
 
     def send_sms(
             self, body: str,
             phone_list: List[str], logger: Logger) -> Result:
         """
         SMSを一斉送信する
+
+        Parameters
+        ----------
+        body: str
+            原稿
+        phone_list: List[str]
+            SMS送信先のリスト
+        logger: Logger
+            ロガー
+
+        Returns
+        -------
+        Result.data: str
+            body: str
+            length: int
+            unit_price: int
+            send_count: int
+            total_price: int
+            responses: List[dict]
+                date_sent: str
+                sid: str
+                status: str
+                to: str
         """
         logger.debug('start send_sms')
         result = Result(__name__)
