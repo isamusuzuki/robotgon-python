@@ -2,22 +2,22 @@
 
 ロボットゴン Python スクリプト集
 
-作成日 2021/07/18
+作成日 2021/07/18、更新日 2021/08/07
 
 ## 01. ファイル・フォルダ構成
 
 ```text
 --robotgon-python/
-    |--apps/    ... 自作モジュールの置き場
-    |--logs/    ... ログファイルの置き場（※1）
+    |--apps/          ... 自作モジュールの置き場
+    |--logs/          ... ログファイルの置き場（※1）
     |--private-data/  ... 個人情報の置き場（※1）
     |--temp/    ... 一時ファイルの置き場（※1）
     |--tests/   ... テストスクリプトの置き場
     |--.env     ... 環境変数に組み込むキーバリュー（※1）
     `--main.py  ... 実行スクリプト
-```
 
 ※1 ... リポジトリから除外
+```
 
 ## 02. Python 環境の構築
 
@@ -57,5 +57,6 @@ cd ~/robotgon-python
 source venv/bin/activate
 
 # 連絡網に一斉送信する
-python main.py renrakumo --genko=210718 --meibo=test
+python main.py renrakumo --genko=210807 --meibo=yakuin
+python main.py renrakumo --genko=210807 --meibo=hancho
 ```
