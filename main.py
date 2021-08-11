@@ -23,8 +23,11 @@ class Main():
         logger = getLoggerA(
             __name__, DEBUG, 'both', 'renrakumo', 'monthly')
         r = Renrakumo(logger=logger)
-        result = r.send(genko=genko, meibo=meibo)
-        logger.info(result.print())
+        try:
+            result = r.send(genko=genko, meibo=meibo)
+            logger.info(result.print())
+        except Exception as err:
+            logger.exception(err)
 
 
 if __name__ == '__main__':
