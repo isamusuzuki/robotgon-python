@@ -10,12 +10,19 @@ class Test(unittest.TestCase):
         self.handler = TwilioHandler()
 
     def test_calc_price(self):
+        """
+        calc_price()メソッドをテストする
+        """
         self.assertEqual(self.handler.calc_price(60), 9)
         self.assertEqual(self.handler.calc_price(80), 18)
         self.assertEqual(self.handler.calc_price(100), 18)
         self.assertEqual(self.handler.calc_price(200), 27)
 
     def test_format_e164(self):
+        """
+        format_e164()メソッドをテストする
+        """
+
         self.assertEqual(
             self.handler.format_e164('080-3759-8996'),
             '+818037598996'

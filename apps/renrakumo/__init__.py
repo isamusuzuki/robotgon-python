@@ -15,6 +15,15 @@ class Renrakumo():
     """
 
     def __init__(self, logger: Logger = None) -> None:
+        """
+        連絡網アプリをインスタンス化する
+
+        Parameters
+        ----------
+        logger: Logger
+            ロガー
+        """
+
         if logger:
             self.logger = logger
         else:
