@@ -4,6 +4,7 @@ venv/
 
 .env
 
+100knocks/sample/*
 logs/*
 private-data/*
 temp/*
