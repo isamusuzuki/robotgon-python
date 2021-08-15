@@ -6,6 +6,7 @@ jupyterlab
 matplotlib
 numpy
 pandas
+playwright
 python-dotenv
 pytz
 twilio
