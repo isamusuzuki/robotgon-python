@@ -1,5 +1,6 @@
 from logging import DEBUG
 
+from apps.browser_auto.firstscript import firstscript
 from apps.renrakumo import Renrakumo
 from apps.util.logger_a import getLoggerA
 
@@ -9,11 +10,19 @@ from fire import Fire
 
 
 class Main():
+    def browserauto(self) -> None:
+        """
+        ブラウザを自動実行する
+        """
+        logger = getLoggerA(
+            __name__, DEBUG, 'both', 'browserauto', 'daily')
+        firstscript(logger=logger)
+
     def renrakumo(self, genko: str, meibo: str) -> None:
         """
         連絡網アプリを実行する
 
-        arameters
+        Parameters
         ----------
         genko: str
             原稿txtのファイル名

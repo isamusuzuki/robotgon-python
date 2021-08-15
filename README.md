@@ -52,6 +52,40 @@ pip install -r requirements.txt -c constraints.txt
 }
 ```
 
+### Playwright 用ブラウザのインストール
+
+```bash
+cd ~/robotgon-python
+source venv/bin/activate
+
+playwright --version
+# => Version 1.14.0-1628783206000
+
+# Chromiumをインストールする
+playwright install chromium
+# => Downloading Playwright build of chromium v907428
+```
+
+インストールされたブラウザのありか
+
+```text
+~/.cache/
+  `--ms-playwright/
+      `--chromium-907428/
+          `--chrome-linux/
+              `--chrome
+```
+
+いつでもこのブラウザを実行できるようにする
+
+```bash
+# ホームフォルダにシンボリックリンクを作成する
+ln -s /home/{{YOURNAME}}/.cache/ms-playwright/chromium-907428/chrome-linux/chrome /home/{{YOURNAME}}/chrome
+
+# Chromium を起動する
+./chrome
+```
+
 ## 03. 実行スクリプトの使い方
 
 ```bash
@@ -61,4 +95,7 @@ source venv/bin/activate
 # 連絡網に一斉送信する
 python main.py renrakumo --genko=210807 --meibo=yakuin
 python main.py renrakumo --genko=210807 --meibo=hancho
+
+# ブラウザを自動実行する
+python main.py browserauto
 ```
