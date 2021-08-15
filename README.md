@@ -83,6 +83,7 @@ playwright install chromium
 ln -s /home/{{YOURNAME}}/.cache/ms-playwright/chromium-907428/chrome-linux/chrome /home/{{YOURNAME}}/chrome
 
 # Chromium を起動する
+cd ~
 ./chrome
 ```
 
@@ -96,6 +97,6 @@ source venv/bin/activate
 python main.py renrakumo --genko=210807 --meibo=yakuin
 python main.py renrakumo --genko=210807 --meibo=hancho
 
-# ブラウザを自動実行する
+# ブラウザ自動化スクリプト
 python main.py browserauto
 ```

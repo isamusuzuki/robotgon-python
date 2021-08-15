@@ -5,7 +5,7 @@ from playwright.sync_api import sync_playwright
 
 def firstscript(logger: Logger) -> None:
     """
-    Playwrightというブラウザを自動化するライブラリの最初のスクリプト
+    Playwrightでブラウザを動かす
 
     Parameter
     ---------
