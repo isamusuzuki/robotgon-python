@@ -2,6 +2,9 @@ autopep8
 fire
 flake8
 flake8-import-order
+jupyterlab
+matplotlib
+numpy
 pandas
 python-dotenv
 pytz
