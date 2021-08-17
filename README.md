@@ -8,9 +8,9 @@
 
 ```text
 --robotgon-python/
-  |--100knocks      ... 書籍『Python 実践データ分析 100 本ノック』を写経する
+  |--100knocks/     ... 『Python 実践データ分析 100 本ノック』を写経
   |--apps/          ... 自作モジュールの置き場
-  |--jupyter-dojo   ... Jupyter 道場
+  |--jupyter-dojo/  ... Jupyter 道場
   |--logs/          ... ログファイルの置き場（※1）
   |--private-data/  ... 個人情報の置き場（※1）
   |--temp/          ... 一時ファイルの置き場（※1）
