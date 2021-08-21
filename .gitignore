@@ -4,7 +4,7 @@ venv/
 
 .env
 
-100knocks/sample/*
+jupyter-dojo/100knocks/sample/*
 logs/*
 private-data/*
 temp/*
