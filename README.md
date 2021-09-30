@@ -2,7 +2,7 @@
 
 ロボットゴン Python スクリプト集
 
-作成日 2021/07/18、更新日 2021/08/21
+作成日 2021/07/18、更新日 2021/09/30
 
 ## 01. ファイル・フォルダ構成
 
@@ -58,11 +58,11 @@ cd ~/robotgon-python
 source venv/bin/activate
 
 playwright --version
-# => Version 1.14.0-1628783206000
+# => Version 1.15.0-1631797286000
 
 # Chromiumをインストールする
 playwright install chromium
-# => Downloading Playwright build of chromium v907428
+# => Downloading Playwright build of chromium v920619
 ```
 
 インストールされたブラウザのありか
@@ -70,7 +70,7 @@ playwright install chromium
 ```text
 ~/.cache/
   `--ms-playwright/
-      `--chromium-907428/
+      `--chromium-920619/
           `--chrome-linux/
               `--chrome
 ```
@@ -78,12 +78,17 @@ playwright install chromium
 いつでもこのブラウザを実行できるようにする
 
 ```bash
+# 前のバージョンのリンクがあれば削除する
+cd ~
+rm chrome
+
 # ホームフォルダにシンボリックリンクを作成する
-ln -s /home/{{YOURNAME}}/.cache/ms-playwright/chromium-907428/chrome-linux/chrome /home/{{YOURNAME}}/chrome
+ln -s /home/{{YOURNAME}}/.cache/ms-playwright/chromium-920619/chrome-linux/chrome /home/{{YOURNAME}}/chrome
 
 # Chromium を起動する
 cd ~
 ./chrome
+# => Version 96.0.4641.0 (Developer Build) (64-bit)
 ```
 
 ## 03. 実行スクリプトの使い方
