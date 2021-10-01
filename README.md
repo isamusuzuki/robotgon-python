@@ -2,7 +2,7 @@
 
 ロボットゴン Python スクリプト集
 
-作成日 2021/07/18、更新日 2021/09/30
+作成日 2021/07/18、更新日 2021/10/01
 
 ## 01. ファイル・フォルダ構成
 
@@ -56,6 +56,8 @@ pip install -r requirements.txt -c constraints.txt
 ```bash
 cd ~/robotgon-python
 source venv/bin/activate
+
+pip install playwright
 
 playwright --version
 # => Version 1.15.0-1631797286000
