@@ -21,10 +21,10 @@ def bacon(item_code: str, logger: Logger) -> List[str]:
         商品画像のURL群
     """
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False, slow_mo=50)
+        browser = p.chromium.launch(headless=False)
         page = browser.new_page()
         url = f'https://item.rakuten.co.jp/backyard/{item_code}/'
-        page.goto(url, wait_until='networkidle')
+        page.goto(url, wait_until='domcontentloaded')
         images = page.query_selector_all(
             'xpath=//div[@class="shohin-detail"]/img')
         logger.info(f'{item_code} count => {len(images)}')
