@@ -2,7 +2,7 @@
 
 ロボットゴン Python スクリプト集
 
-作成日 2021/07/18、更新日 2022/01/12
+作成日 2021/07/18、更新日 2022/01/23
 
 ## 01. ファイル・フォルダ構成
 
@@ -15,6 +15,7 @@
   |--temp/          ... 一時ファイルの置き場（※1）
   |--tests/         ... テストスクリプトの置き場
   |--.env           ... 環境変数に組み込むキーバリュー（※1）
+  |--itemimages.py  ... ブラウザ自動化 実行スクリプト
   `--main.py        ... 実行スクリプト
 
 ※1 ... リポジトリから除外
@@ -89,4 +90,6 @@ python main.py renrakumo --genko=210807 --meibo=hancho
 
 # ブラウザ自動化スクリプト
 python main.py browserauto
+python itemimages.py job1 --suffix=01
+python itemimages.py job2 --suffix=01
 ```
