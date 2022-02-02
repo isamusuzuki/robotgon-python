@@ -1,6 +1,5 @@
-from logging import DEBUG, INFO
+from logging import INFO
 
-from apps.browser_auto.apple import apple
 from apps.renrakumo import Renrakumo
 from apps.util.logger_a import getLoggerA
 
@@ -10,13 +9,6 @@ from fire import Fire
 
 
 class Main():
-    def browserauto(self) -> None:
-        """
-        ブラウザを自動実行する
-        """
-        logger = getLoggerA(__name__, INFO, 'console')
-        apple(logger=logger)
-
     def renrakumo(self, genko: str, meibo: str) -> None:
         """
         連絡網アプリを実行する
@@ -29,7 +21,7 @@ class Main():
             名簿csvのファイル名
         """
         logger = getLoggerA(
-            __name__, DEBUG, 'both', 'renrakumo', 'monthly')
+            __name__, INFO, 'both', 'renrakumo', 'monthly')
         r = Renrakumo(logger=logger)
         try:
             result = r.send(genko=genko, meibo=meibo)
