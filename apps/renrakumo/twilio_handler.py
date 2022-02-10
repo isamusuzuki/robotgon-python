@@ -17,7 +17,8 @@ class TwilioHandler():
         account_sid = os.environ['TWILIO_ACCOUNT_SID']
         auth_token = os.environ['TWILIO_AUTH_TOKEN']
         self.client = Client(account_sid, auth_token)
-        self.from_number = '+12067371120'
+        self.from_number = os.environ['TWILIO_FROM_NUMBER']
+        self.status_callback = os.environ['REQUESTBIN_ENDPOINT']
         self.unit_length = 67
         self.unit_price_dollar = 0.08
         self.dollar_yen_rate = 110.0
@@ -104,6 +105,7 @@ class TwilioHandler():
                 response = self.client.messages.create(
                     body=body,
                     from_=self.from_number,
+                    status_callback=self.status_callback,
                     to=self.format_e164(phone)
                 )
                 result.data['responses'].append({

@@ -58,6 +58,7 @@ cd ~/robotgon-python
 source venv/bin/activate
 
 # 連絡網に一斉送信する
+python main.py renrakumo --genko=210711 --meibo=test
 python main.py renrakumo --genko=210807 --meibo=yakuin
 python main.py renrakumo --genko=210807 --meibo=hancho
 ```
