@@ -50,7 +50,6 @@ class Renrakumo():
         -------
         Result.data: None
         """
-        self.logger.debug('start')
         result = Result(__name__)
 
         # 1. 原稿を読む
@@ -63,7 +62,7 @@ class Renrakumo():
         else:
             with open(text_file, mode='r', encoding='utf-8') as f:
                 body = f.read().replace('\n', ' ')
-            self.logger.debug(f'read <= {text_file}')
+            self.logger.info(f'read <= {text_file}')
 
             # 2. 名簿を読む
             csv_file = f'private-data/meibo/{meibo}.csv'
@@ -76,7 +75,7 @@ class Renrakumo():
                 df1 = pd.read_csv(
                     csv_file, encoding='utf-8', dtype=object).fillna('')
                 phone_list = df1['phone'].values.tolist()
-                self.logger.debug(f'read <= {csv_file}')
+                self.logger.info(f'read <= {csv_file}')
 
                 # 3. SMSを送信する
                 handler = TwilioHandler()
@@ -85,13 +84,20 @@ class Renrakumo():
                     phone_list=phone_list,
                     logger=self.logger
                 )
-                self.logger.debug(result1.print())
 
                 if not result1.success:
+                    self.logger.critical(result1.print())
                     result.message = result1.message
+                    return result
                 else:
-                    json_data = json.dumps(
-                        result1.data, ensure_ascii=False, indent=2)
-                    self.logger.debug(f'result1.data => \n{json_data}')
+                    self.logger.info(result1.print())
+                    # 4. 実行結果をJSONファイルとして保存する
+                    json_file = f'temp/{genko}{meibo}.json'
+                    with open(json_file, mode='w', encoding='utf-8') as f:
+                        f.write(json.dumps(
+                            result1.data,
+                            ensure_ascii=False, indent=2
+                        ))
+                    self.logger.info(f'done => {json_file}')
                     result.success = True
-                return result
+                    return result

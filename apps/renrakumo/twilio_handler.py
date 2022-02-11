@@ -86,7 +86,6 @@ class TwilioHandler():
                 status: str
                 to: str
         """
-        logger.debug('start send_sms')
         result = Result(__name__)
         length = len(body)
         unit_price = self.calc_price(length)
@@ -99,7 +98,6 @@ class TwilioHandler():
             'total_price': send_count * unit_price,
             'responses': []
         }
-        logger.debug('start loop')
         try:
             for phone in phone_list:
                 response = self.client.messages.create(
@@ -114,10 +112,9 @@ class TwilioHandler():
                     'status': response.status,
                     'to': response.to,
                 })
-            logger.debug('end loop')
+                logger.info(f'{phone} => {response.status}')
             result.success = True
         except Exception as err:
             result.message = f'error => {err}'
         finally:
-            logger.debug('end send_sms')
             return result
