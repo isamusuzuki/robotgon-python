@@ -2,7 +2,7 @@
 
 ロボットゴン Python スクリプト集
 
-作成日 2021/07/18、更新日 2022/02/02
+作成日 2021/07/18、更新日 2022/02/14
 
 ## 01. ファイル・フォルダ構成
 
@@ -61,4 +61,8 @@ source venv/bin/activate
 python main.py renrakumo --genko=210711 --meibo=test
 python main.py renrakumo --genko=210807 --meibo=yakuin
 python main.py renrakumo --genko=210807 --meibo=hancho
+
+# PDFファイルを加工する
+# ※ 細かい指示は、pdftool.jsonファイルに書く
+python main.py pdftool
 ```
