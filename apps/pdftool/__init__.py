@@ -58,3 +58,22 @@ class PdfTool():
             pdf_file = f'{output_folder}/{n:02}.pdf'
             dst.save(pdf_file)
             self.logger.info(f'splitted => {pdf_file}')
+
+    def rotate(
+            self, input_file: str, output_file: str,
+            pages: List[int], clockwise: bool) -> None:
+        """
+        PDFファイルの中のページを回転させる
+        """
+        pdf = Pdf.open(input_file)
+        self.logger.info(f'read <= {input_file}')
+        for n, page in enumerate(pdf.pages):
+            if n + 1 in pages:
+                if clockwise:
+                    page.Rotate = 90
+                    self.logger.info(f'{n+1} page => rotate clockwise')
+                else:
+                    page.Rotate = 270
+                    self.logger.info(f'{n+1} page => rotate counter-clockwise')
+        pdf.save(output_file)
+        self.logger.info(f'done => {output_file}')

@@ -1,8 +1,7 @@
-import json
 from logging import INFO
-from os import path
 
 from apps.pdftool import PdfTool
+from apps.pdftool.read_json import read_json
 from apps.renrakumo import Renrakumo
 from apps.util.logger_a import getLoggerA
 
@@ -39,41 +38,32 @@ class Main():
         ※ 細かい指示は、pdftool.jsonファイルに書く
         """
         logger = getLoggerA(__name__, INFO, 'console')
-        json_file = 'temp/pdftool.json'
-        if not path.exists(json_file):
-            logger.critical(f'{json_file}がありません')
+        result = read_json()
+        if not result.success:
+            logger.critical(result.print())
         else:
-            # order.json を読む
-            with open(json_file, mode='r', encoding='utf-8') as f:
-                order_dict = json.loads(f.read())
-            if 'command' not in order_dict:
-                logger.critical(f'{json_file}にcommandキーがありません')
-            else:
-                command = order_dict['command']
-                # PdfToolをインスタンス化する
-                pdftool = PdfTool(logger=logger)
-                if command == 'merge':
-                    if 'input_files' not in order_dict:
-                        logger.critical(f'{json_file}にinput_filesキーがありません')
-                    elif 'output_file' not in order_dict:
-                        logger.critical(f'{json_file}にoutput_fileキーがありません')
-                    else:
-                        pdftool.merge(
-                            input_files=order_dict['input_files'],
-                            output_file=order_dict['output_file']
-                        )
-                elif command == 'split':
-                    if 'input_file' not in order_dict:
-                        logger.critical(f'{json_file}にinput_fileキーがありません')
-                    elif 'output_folder' not in order_dict:
-                        logger.critical(f'{json_file}にoutput_folderキーがありません')
-                    else:
-                        pdftool.split(
-                            input_file=order_dict['input_file'],
-                            output_folder=order_dict['output_folder']
-                        )
-                else:
-                    logger.critical(f'{command}は想定外のコマンドです')
+            logger.info(result.print())
+
+            # PdfToolをインスタンス化する
+            pdftool = PdfTool(logger=logger)
+
+            if result.data['command'] == 'merge':
+                pdftool.merge(
+                    input_files=result.data['input_files'],
+                    output_file=result.data['output_file']
+                )
+            elif result.data['command'] == 'split':
+                pdftool.split(
+                    input_file=result.data['input_file'],
+                    output_folder=result.data['output_folder']
+                )
+            elif result.data['command'] == 'rotate':
+                pdftool.rotate(
+                    input_file=result.data['input_file'],
+                    output_file=result.data['output_file'],
+                    pages=result.data['pages'],
+                    clockwise=result.data['clockwise']
+                )
 
 
 if __name__ == '__main__':

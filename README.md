@@ -63,6 +63,39 @@ python main.py renrakumo --genko=210807 --meibo=yakuin
 python main.py renrakumo --genko=210807 --meibo=hancho
 
 # PDFファイルを加工する
-# ※ 細かい指示は、pdftool.jsonファイルに書く
+# ※ 細かい指示は、temp/pdftool.jsonファイルに書く
 python main.py pdftool
+```
+
+## 04. temp/pdftool.json ファイルの書き方
+
+PDF を結合する
+
+```json
+{
+  "command": "merge",
+  "input_files": ["temp/pdf/01.pdf", "temp/pdf/02.pdf"],
+  "output_file": "temp/merged.pdf"
+}
+```
+
+PDF を分割する
+
+```json
+{
+  "command": "split",
+  "input_file": "temp/pdf/original.pdf"
+}
+```
+
+PDF のページを回転させる
+
+```json
+{
+  "command": "rotate",
+  "input_file": "temp/pdf/original.pdf",
+  "output_file": "temp/rotated.pdf",
+  "pages": [4, 5],
+  "clockwise": false
+}
 ```
