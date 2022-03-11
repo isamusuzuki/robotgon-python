@@ -58,9 +58,9 @@ cd ~/robotgon-python
 source venv/bin/activate
 
 # 連絡網に一斉送信する
-python main.py renrakumo --genko=210711 --meibo=test
-python main.py renrakumo --genko=210807 --meibo=yakuin
-python main.py renrakumo --genko=210807 --meibo=hancho
+python main.py renrakumo --genko=220311h --meibo=hancho
+python main.py renrakumo --genko=220311n --meibo=newbie
+python main.py renrakumo --genko=220311y --meibo=yakuin
 
 # PDFファイルを加工する
 # ※ 細かい指示は、temp/pdftool.jsonファイルに書く
